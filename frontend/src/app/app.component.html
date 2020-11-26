@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Restaurantes </title>
+</head>
+
+
+<body class="bg-dark">
+  <form [formGroup]="formulario" (ngSubmit)="enviar()">
+    <div class="contaier bg-danger" style="padding: 5%; color: gold;">
+      <div class="jumnotron">
+        <h1 style="font-family: cursiva;font-size: 80px;">Restaurantes</h1>
+        <h2>¡Hoy es {{ day }}! Y apenas son las {{ time }} </h2>
+      </div>
+      <h2>A esta hora te recomendamos preparar <u><b>{{ currentFoodType }}</b></u></h2>
+    </div>
+
+    <div class="row">
+      <div clas="col-md-6" style="width: 45%; margin: 2%">
+        <div class="card" style="padding: 5%;">
+          <div>
+            <h3>¿Quieres preparar algo para mas tarde?</h3>
+            <h5>Te recomendamos preparar: <b>{{responseItem}}</b></h5>
+          </div>
+
+          <div class="form-group">
+            <label for="waiter">Soy... </label>
+            <select class="form-control" id="waiter" formControlName="waiter" required>
+              <option *ngFor="let w of waiters">{{w}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="power">dime que preparar para el día: </label>
+            <select class="form-control" id="weekday" formControlName="weekday" required>
+              <option *ngFor="let d of days">{{d}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="power">a las </label>
+            <select class="form-control" id="hour" formControlName="hour" required>
+              <option *ngFor="let h of hours">{{h}}</option>
+            </select>
+            <select class="form-control" id="suffix" formControlName="suffix" required>
+              <option *ngFor="let s of hSuffix">{{s}}</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Enviar
+          </button>
+        </div>
+      </div>
+      <div clas="col-md-6" style="width: 45%; margin: 2%;">
+        <div class="card" style="padding: 5%;">
+          <img src="{{currentImageLink}}"/>
+
+        </div>
+      </div>
+    </div>
+  </form>
+
+</body>
+
+</html>
